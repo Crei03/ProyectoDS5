@@ -1,0 +1,28 @@
+<header class="header">
+    <div class="logo">
+        <img src="../public/Logo.png" alt="Logo">
+    </div>
+    <nav>
+        <div class="busqueda">
+            <img id="lupa" src="../public/Lupa.svg" alt="Lupa" width="15" height="15">
+            <input type="text" id="barrabusqueda" placeholder="Buscar">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Inicio</a></li>
+            <label for="categorias">Categorias</label>
+            <select id="categorias" name="categorias" onchange="window.location.href=this.value;">
+                <option value="" selected disabled hidden></option>
+                <option value="#">Gama alta</option>
+                <option value="#">Gama media</option>
+                <option value="#">Gama baja</option>
+                <option value="#">Empresarial</option>
+                <option value="#">Gamer</option>
+              </select>
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#"><img id="cart" src="../public/cart.png" alt="carrito" width="20" height="20"></a></li>
+            <li><a href="#"><img id="cuenta" src="../public/user.png" alt="cuenta" width="20" height="20"></a></li>
+        </ul>
+    </nav>
+</header>
