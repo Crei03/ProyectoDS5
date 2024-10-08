@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<header class="header">
+    <div class="logo"> <!-- Insertar logo dentro del contenedor del menú -->
+        <img src="../public/Logo.png" alt="Logo"> <!-- Imagen guardada en la carpeta public -->
+    </div>
+    <nav>
+        <div class="busqueda"> <!-- Con la clase "busqueda" de Bootstrap se implementó el navegador de la página -->
+            <img id="lupa" src="../public/Lupa.svg" alt="Lupa" width="15" height="15">
+            <input type="text" id="barrabusqueda" placeholder="Buscar">
+        </div>
+        <ul class="nav-links"> <!-- Con la clase "nav-link" de Bootstrap se implementó el modelo de los items dentro del menú -->
+            <li><a href="#">Inicio</a></li>
+            <label for="categorias">Categorías</label> <!-- Combobox de las categorías sobre los productos -->
+            <select id="categorias" name="categorias" onchange="window.location.href=this.value;">
+                <option value="" selected disabled hidden></option>
+                <option value="#">Gama alta</option>
+                <option value="#">Gama media</option>
+                <option value="#">Gama baja</option>
+                <option value="#">Empresarial</option>
+                <option value="#">Gamer</option>
+              </select>
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#"><img id="cart" src="../public/cart.png" alt="carrito" width="20" height="20"></a></li>
+            <li><a href="#"><img id="cuenta" src="../public/user.png" alt="cuenta" width="20" height="20"></a></li>
+        </ul>
+    </nav>
+</header>
+<style>@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+    *{
+        margin: 0;
+        font-family:"Inter", sans-serif;
+    }
+    .parrafo1{
+        margin-right: 4rem; /* Ajuste para el parrafo de mision */
+        margin-left: 19rem;
+
+    }
+    .parrafo2{
+        margin-right: 11rem; /* Ajuste para el parrafo de vision*/
+        margin-left: 4rem;
+
+    }
+    .custom-padding {
+        padding-left: 50px; /* Ajuste para titulo mision*/
+        padding-right: 50px;  
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .custom-padding2 {
+        padding-left: 50px; /* Ajuste para titulo vision*/
+        padding-right: 400px;  
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .custom-padding3 {
+        padding-left: 30px; /* Ajuste para las imagenes del equipo de trabajo*/
+        padding-right: 30px;  
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .custom-margin {
+    margin-left: 12%;  /* Ajuste para la informacion "sobre nosotros"*/
+    margin-right: 12%; 
+    }
+    .custom-margin-level {
+    margin-left: 5%;  /* Ajuste para el contenedor de mision y vision*/
+    margin-right: 5%; 
+    }
+
+    .custom-line-height {
+    line-height: 2.0; /*Interlineado*/
+    }
+    .fondo-imagen {
+		width: 100%; /* La imagen ocupará el 100% del ancho de la página */
+		height: auto; /* Mantener la proporción de la imagen */
+		display: block; /* Evitar espacio en blanco debajo de la imagen */
+	}
+	.texto_encima{
+		position: absolute;
+		color:#ffffff;
+		font-size: 400%;
+        font-weight: bold;
+		text-align: center;
+		top: 50%; /* Coloca el texto en el centro vertical */
+		left: 50%; /* Coloca el texto en el centro horizontal */
+		transform: translate(-50%, -50%); /* Centra el texto completamente */
+	}
+	.imagen_con_texto{
+		position: relative; /* Ajuste para el titulo principal*/
+		width: 100%;
+	}
+    .header{
+        display: flex;
+        border: 1px solid rgb(197, 195, 195); 
+        padding-left: 5%;         
+        padding-right: 5%;  
+        margin: 0;
+        height: 10vh;      
+    }
+    .header .logo img{
+        height: 75%;
+        width: auto;
+        margin-top: 15%;
+    }
+    .header .nav-links{
+        display: flex;
+        white-space: nowrap;
+        gap: 2vw;
+        margin-top: -8vh;
+        padding: 3% 85%;
+        list-style: none;
+        color: rgb(136, 136, 136);
+    }
+    .header .nav-links a{
+        font-size: 700;
+        color: rgb(136, 136, 136);
+        text-decoration: none;
+    }
+    .header #categorias{
+        margin-left: -2vw;
+        border: none;
+        width: 1.5vw;
+        height: 3vh;
+        color: rgb(136, 136, 136);
+    }
+    .header #categorias a{
+        font-size: 700;
+        color: rgb(136, 136, 136);
+        text-decoration: none;
+    }
+    .header #cart{
+        margin-left: 3.5vw;
+    }
+    .header .busqueda{
+        margin-top: 2vh;
+        margin-left: 3vw;
+    }
+    .header .busqueda input{
+        position: relative;
+        background-color: rgb(241, 241, 241);
+        padding-left: 2.5vw;
+        border: none;
+        border-radius: 1vh;
+        width: 30vw;
+        height: 6vh;
+        margin-left: -5%;
+        color: rgb(136, 136, 136);
+        z-index: 1;
+    }
+    .nav{
+        display: flex;
+    }
+    .header #lupa{
+        position: relative;
+        z-index: 2;
+    }
+    body {
+    padding: 0;
+    overflow-x: hidden; /* Evita la barra de desplazamiento horizontal */
+    } </style>
