@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planilla</title>
+    <style>
+        /* Aquí va tu CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registro de Planilla</h1>
+    <div class="form-group">
+        <label for="cedula">Cédula (Prefijo - Tomo - Asiento)</label>
+        <input type="text" id="cedula" placeholder="Ej: 1-1234-56" required>
+    </div>
+    <div class="form-group">
+        <label for="nombre1">Nombre 1</label>
+        <input type="text" id="nombre1" required>
+    </div>
+    <div class="form-group">
+        <label for="nombre2">Nombre 2</label>
+        <input type="text" id="nombre2">
+    </div>
+    <div class="form-group">
+        <label for="apellido1">Apellido 1</label>
+        <input type="text" id="apellido1" required>
+    </div>
+    <div class="form-group">
+        <label for="apellido2">Apellido 2</label>
+        <input type="text" id="apellido2">
+    </div>
+    <div class="form-group">
+        <label for="provincia">Provincia</label>
+        <select id="provincia" required>
+            <option value="" disabled selected>Seleccione una provincia</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="distrito">Distrito</label>
+        <select id="distrito" required>
+            <option value="" disabled selected>Seleccione un distrito</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="corregimiento">Corregimiento</label>
+        <select id="corregimiento" required>
+            <option value="" disabled selected>Seleccione un corregimiento</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="horasTrabajadas">Horas Trabajadas</label>
+        <input type="text" id="horasTrabajadas" required>
+    </div>
+    <div class="form-group">
+        <label for="sueldoPorHora">Sueldo por Hora</label>
+        <input type="text" id="sueldoPorHora" required>
+    </div>
+    <div class="form-group">
+        <label for="descuento1">Descuento 1</label>
+        <input type="text" id="descuento1" value="0">
+    </div>
+    <div class="form-group">
+        <label for="descuento2">Descuento 2</label>
+        <input type="text" id="descuento2" value="0">
+    </div>
+    <div class="form-group">
+        <button type="button" onclick="calcularSalario()">Calcular Salario</button>
+    </div>
+    <div class="form-group">
+        <label for="salarioMensual">Salario Mensual</label>
+        <input type="text" id="salarioMensual" readonly>
+    </div>
+    <div class="form-group">
+        <label for="salarioNeto">Salario Neto</label>
+        <input type="text" id="salarioNeto" readonly>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
