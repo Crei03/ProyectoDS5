@@ -1,54 +1,67 @@
-# Astro Starter Kit: Basics
+#Proyecto Software V Página Web
 
-```sh
-npm create astro@latest -- --template basics
+```markdown
+# Proyecto API - [Nombre del Proyecto]
+
+Este repositorio contiene el código base para nuestro proyecto. Si es tu primera vez trabajando con este repositorio, sigue los siguientes pasos para configurarlo.
+
+## Instalación
+
+Si es la primera vez que clonas este repositorio, asegúrate de instalar todas las dependencias. Puedes usar `npm` o `pnpm` para hacerlo.
+
+### Con npm:
+```bash
+npm install
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+### Con pnpm:
+```bash
+pnpm install
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Configuración de las APIs
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Si vas a trabajar con las APIs, necesitarás un archivo `.env` que contenga las variables de entorno necesarias. Este archivo debe incluir la `URL` de la API y la `KEY` de autenticación.
 
-Any static assets, like images, can be placed in the `public/` directory.
+Por favor, solicita estas credenciales antes de comenzar.
 
-## 🧞 Commands
+## Sincronización con el repositorio principal
 
-All commands are run from the root of the project, from a terminal:
+Si necesitas actualizar tu fork con los últimos cambios del repositorio principal, sigue estos pasos:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+1. Añade el repositorio original como remoto:
 
-## 👀 Want to learn more?
+   ```bash
+   git remote add upstream https://github.com/original-owner/ProyectoDS5.git
+   ```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+2. Obtén los cambios del repositorio principal:
+
+   ```bash
+   git fetch upstream
+   ```
+
+3. Fusiona los cambios de la rama `dev`:
+
+   ```bash
+   git merge upstream/dev
+   ```
+
+## Subir cambios a tu fork
+
+Para subir tus cambios a tu propio repositorio (fork), usa el siguiente comando:
+
+```bash
+git push origin [rama-a-la-que-quieren-pushear]
+```
+
+## Uso
+
+1. Clona el repositorio.
+2. Instala las dependencias.
+3. Solicita y configura el archivo `.env` con la URL y la KEY necesarias.
+4. Actualiza tu fork con los últimos cambios del repositorio principal.
+5. ¡Listo! Ahora estarás preparado para trabajar en el proyecto.
+```
+
+Con estas instrucciones, los colaboradores podrán sincronizar su fork con el repositorio principal y subir sus cambios de manera efectiva.
