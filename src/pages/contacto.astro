@@ -1,0 +1,253 @@
+--- 
+import Header from '../components/Header.astro';
+import Layout from '../layouts/Layout.astro'; 
+import Card from '../components/Card.astro'; 
+import { Image } from 'astro:assets'; 
+import Foot from '../components/Footer.astro'; 
+---
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<Header />
+
+<!-- Imagen del banner -->
+<div class="banner-container">
+  <Image src="/banner.jpg" alt="Banner de la página" width={1348.7} height={629} />
+  <div class="banner-text">Estamos para ayudarte</div>
+</div>
+
+<!-- Contenedor para la tarjeta y la imagen debajo del banner -->
+<div class="content-container">
+  <!-- Tarjeta grande a la izquierda -->
+  <Card cuadro="Información Importante" tipo="grande" />
+  
+  <!-- Contenedor para la imagen y la tarjeta pequeña -->
+  <div class="image-and-small-card">
+    <!-- Imagen a la derecha de la tarjeta -->
+    <div class="image-below-banner">
+      <Image src="/imagenseñora.jpg" alt="Imagen debajo del banner" width={648} height={626} />
+    </div>
+    <!-- Tarjeta pequeña debajo de la imagen -->
+    <Card cuadro="Información Importante" tipo="pequeña" />
+  </div>
+</div>
+
+<Layout title="Contacto">
+  <main>
+    <h2>Preguntas frecuentes</h2>
+
+    <!-- Estructura de preguntas frecuentes -->
+    <div class="faq">
+      <div class="faq-item">
+        <input type="checkbox" id="faq1" class="faq-checkbox">
+        <label for="faq1" class="faq-question">¿Cómo compro?</label>
+        <div class="faq-answer"><p>Para realizar una compra en nuestro sitio web, sigue estos pasos:</p></br>
+            <ol>
+              <li>Navega por nuestras categorías de productos o utiliza el buscador para encontrar la computadora que deseas comprar.</li>
+              <li>Haz clic en el producto para ver más detalles y, si es el adecuado, selecciona la cantidad y haz clic en "Añadir al carrito".</li>
+              <li>Una vez que hayas añadido todos los productos que deseas comprar, haz clic en el ícono del carrito en la esquina superior derecha de la página.</li>
+              <li>Revisa tu carrito y haz clic en "Proceder a la compra".</li>
+              <li>Completa los detalles de envío y pago, y luego confirma tu pedido.</li>
+              <li>Recibirás un correo electrónico de confirmación con los detalles de tu pedido.</li>
+            </ol></div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" id="faq2" class="faq-checkbox">
+        <label for="faq2" class="faq-question">¿Qué medios de pago puedo utilizar para pagar mi compra?</label>
+        <div class="faq-answer"><p>Aceptamos los siguientes métodos de pago:</p></br>
+            <ol>
+            <li>Tarjetas de crédito y débito: Visa y MasterCard.</li>
+            <li>Transferencias bancarias: Puede realizar una transferencia directamente a nuestra cuenta bancaria.</li>
+            <li>Pagos electrónicos: Puede realizar su pago a través de PayPal.</li>
+        </ol></div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" id="faq3" class="faq-checkbox">
+        <label for="faq3" class="faq-question">¿Si compro un producto, este tiene garantía?</label>
+        <div class="faq-answer">Sí, todos nuestros productos vienen con garantía. La garantía estándar es de 1 año a      partir de la fecha de compra y cubre defectos de fabricación o materiales. Algunas marcas o productos específicos pueden ofrecer garantías extendidas.</br> 
+            Consulta la página de cada producto para obtener información específica sobre la garantía. Para realizar un reclamo de garantía, por favor contáctanos a través de nuestro Centro de Soporte Técnico. </div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" id="faq4" class="faq-checkbox">
+        <label for="faq4" class="faq-question">¿Cómo puedo conocer el estado de mi compra?</label>
+        <div class="faq-answer">Puedes conocer el estado de tu compra de las siguientes maneras:</br></br>
+
+            Correo Electrónico: Recibirás actualizaciones por correo electrónico en cada etapa de tu pedido (confirmación, envío, y entrega).</br></br>
+            
+            Seguimiento en línea: Ingresa a la sección "Mis Pedidos" en tu cuenta de usuario para ver el estado actual de tu pedido.</div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" id="faq5" class="faq-checkbox">
+        <label for="faq5" class="faq-question">¿Puedo devolver un producto que compré?</label>
+        <div class="faq-answer">No, no aceptamos devoluciones de productos una vez que se ha completado la compra. Te recomendamos que revises cuidadosamente las especificaciones y detalles del producto antes de realizar la compra. Si tienes algún problema con el producto recibido o si este presenta defectos de fabricación, por favor, contacta con nuestro Centro de Soporte Técnico para recibir asistencia y explorar posibles soluciones bajo la política de garantía.</div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" id="faq6" class="faq-checkbox">
+        <label for="faq6" class="faq-question">¿Los precios incluyen costo de envío?</label>
+        <div class="faq-answer">No, los precios mostrados en nuestra tienda no incluyen el costo de envío, a menos que se indique lo contrario. El costo de envío se calculará durante el proceso de pago y dependerá del destino, el peso, y el tamaño de los productos. Ofrecemos envío gratuito para pedidos que superen un monto específico, dependiendo de la región. </div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" id="faq7" class="faq-checkbox">
+        <label for="faq7" class="faq-question">¿Puedo hacer compras desde el extranjero?</label>
+        <div class="faq-answer">Actualmente, no aceptamos compras desde el extranjero. Nuestro sitio web y servicios de entrega están limitados a envíos dentro del territorio nacional. Lamentamos cualquier inconveniente que esto pueda causar y esperamos expandir nuestros servicios a más regiones en el futuro. Para más detalles, por favor contacta con nuestro Centro de Soporte Técnico.</div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+  
+  * {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+  }
+
+  /* Estilo para el banner y su texto */
+  .banner-container {
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+
+  .banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 6vw;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+  }
+
+  /* Contenedor para la tarjeta y la imagen debajo del banner */
+  .content-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-top: 50px;
+  }
+
+  .image-and-small-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-below-banner {
+    width: 42vw;
+    height: auto;
+    border-radius: 30px;
+    overflow: hidden;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Estilo para el contenido principal (FAQ) */
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 90%;
+    max-width: 43.75rem;
+    color: #8b8b8b;
+    font-size: 2.5rem;
+    line-height: 1.6;
+    margin-left: 18%;
+  }
+
+  /* Estilo para los títulos dentro del main */
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 1em;
+  }
+
+  .container {
+    max-width: 75rem;
+    margin: auto;
+    padding: 0 1rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media (min-width: 48rem) { 
+    .grid {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  .flex {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 48rem) {
+    .flex {
+      flex-direction: row;
+    }
+  }
+
+ /* Estilos específicos para la sección FAQ */
+  .faq {
+    max-width: 50rem;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+  }
+
+  .faq-checkbox {
+    display: none;
+  }
+
+  /* Estilo para las preguntas */
+  .faq-question {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #000000;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    transition: font-size 0.3s ease, color 0.3s ease;
+  }
+
+  /* Ocultar respuestas por defecto */
+  .faq-answer {
+    display: none;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f9f9f9;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+  }
+
+  /* Mostrar respuesta cuando el checkbox está marcado */
+  .faq-checkbox:checked + .faq-question + .faq-answer {
+    display: block;
+  }
+
+   /* Cambia el color y tamaño de la pregunta al hacer hover */
+  .faq-question:hover {
+    color: #088395;
+    font-size: 1.5rem;
+}
+</style>
+
+<Foot />

@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+---
+<header class="header">
+  <div class="header-container">
+     <div class="logo">
+    <img  src="/LogoF.png" width="80" height="80"/>    
+    </div> 
+    <div class="titulo">
+    <p>JS.Electronics.PTY</p>
+  </div>
+  </div>
+</header>
+
+<style>
+       header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white; /* Fondo blanco */
+    padding: 4px 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destacar la cabecera */
+    z-index: 1000;
+    text-align: center;
+}
+
+.header-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.titulo {
+  margin-left: 10px; /* Añade espacio entre el logo y el texto */
+}
+
+.titulo p {
+  font-size: 18px; /* Tamaño del texto */
+  font-weight: bold;
+  color: grey;
+  margin: 0; /* Elimina el margen del párrafo */
+}
+</style>

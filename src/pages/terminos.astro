@@ -1,0 +1,144 @@
+---
+// Importar los componentes de Header y Footer
+import Header from '../components/Header.astro';
+import Layout from '../layouts/Layout.astro';
+
+---
+<Layout title="Términos y Condiciones">  
+  <body>
+    <Header />
+    <main>
+      <!-- Sección de la imagen con el título encima -->
+      <section class="image-section">
+        <img src="/Terminos.png" alt="Términos y Condiciones" class="header-image" />
+        <div class="image-overlay">
+          <h1>Términos y Condiciones</h1>
+        </div>
+      </section>
+  
+      <div class="content-box">
+        <!-- Políticas de Garantía -->
+        <section id="garantia">
+          <h2>Políticas de Garantía</h2>
+          <ul>
+            <li>Todas nuestras laptops están respaldadas por una garantía de un año.</li>
+            <li>Durante este período, nos comprometemos a reparar o reemplazar cualquier defecto de fabricación sin costo adicional para el cliente.</li>
+            <li>Los clientes deben informar cualquier problema cubierto por la garantía a nuestro servicio de atención al cliente.</li>
+            <li>Se proporcionará un número de reclamación y se instruirá al cliente sobre los pasos a seguir para la reparación del producto.</li>
+            <li>La garantía no cubre daños causados por accidentes, uso indebido, modificaciones no autorizadas o desastres naturales.</li>
+            <li>El cliente es responsable de realizar copias de seguridad de sus datos antes de enviar la laptop para reparación.</li>
+          </ul>
+        </section>
+  
+        <hr />
+  
+        <!-- Políticas de Promociones -->
+        <section id="promociones">
+          <h2>Políticas de Promociones</h2>
+          <ul>
+            <li>Todas las promociones tendrán un periodo de validez claramente establecido.</li>
+            <li>Las promociones estarán sujetas a condiciones específicas de elegibilidad, como la compra de ciertos modelos de laptops, un monto mínimo de compra, o cualquier otro criterio que se considere necesario.</li>
+            <li>Se establecerán limitaciones sobre la cantidad de productos que un cliente puede adquirir con el descuento.</li>
+            <li>Se identificarán claramente productos excluidos y cualquier restricción.</li>
+            <li>La empresa se reserva el derecho de modificar las promociones en cualquier momento.</li>
+          </ul>
+        </section>
+  
+        <hr />
+  
+        <!-- Políticas de Privacidad y Seguridad -->
+        <section id="privacidad">
+          <h2>Políticas de Privacidad y Seguridad</h2>
+          <ul>
+            <li>La empresa se compromete a recopilar solo la información personal necesaria para llevar a cabo transacciones y proporcionar servicios.</li>
+            <li>La información personal incluye, pero no se limita a, nombres, direcciones, números de teléfono y detalles de pago.</li>
+            <li>Utilizamos tecnologías seguras para procesar todas las transacciones y proteger la información financiera del cliente.</li>
+            <li>Se implementan medidas de seguridad para prevenir accesos no autorizados a sistemas que contengan datos sensibles.</li>
+            <li>La información personal no se compartirá con terceros sin el consentimiento expreso del titular, excepto en casos requeridos por la ley.</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </body>
+</Layout>
+
+<style>
+    
+    body {
+      font-family: 'Inter', sans-serif; 
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+    }
+  
+    /* Imagen de fondo que cubre todo el ancho */
+    .image-section {
+      position: relative;
+      width: 100vw; /* Ancho completo de la pantalla */
+      height: 90vh; /* Aumentamos la altura al 70% del alto de la pantalla */
+      overflow: hidden; /* Para que la imagen no se salga del contenedor */
+    }
+  
+    .header-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Para que la imagen cubra toda la sección sin distorsión */
+    }
+  
+    /* Título superpuesto a la imagen */
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.4); /* Fondo semitransparente para resaltar el texto */
+    }
+  
+    .image-overlay h1 {
+      color: white;
+      font-size: 3rem;
+      font-weight: 700; /* Negrita */
+    }
+  
+    /* Espaciado para que el contenido no quede debajo del header */
+    .content-box {
+      padding: 40px 20px;
+      margin: 20px auto;
+      max-width: 800px;
+    }
+  
+    h2 {
+      font-size: 1.8rem; /* Tamaño un poco más grande para los títulos secundarios */
+      font-weight: 700; /* Negrita */
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+  
+    ul {
+      padding-left: 20px;
+      line-height: 1.6;
+    }
+  
+    li {
+      margin-bottom: 10px;
+    }
+  
+    /* Línea divisora entre secciones */
+    hr {
+      border: none;
+      border-top: 1px solid #ccc; /* Línea de división */
+      margin: 20px 0;
+    }
+  
+    footer {
+      background-color: #f1f1f1;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+  
+  

@@ -1,0 +1,205 @@
+---
+import Header from "../components/Header_login.astro"
+import Layout from "../layouts/Layout.astro"
+---
+
+<Layout title = "Crear Cuenta">
+  <Header></Header>
+  <body>
+    <div class="container">
+      <li class="link-card">
+        <h2>Crea tu cuenta</h2>
+        <form id="registroForm" action="/api/crearUsuario" accept-charset="UTF-8" method="POST">
+          <ul class="form-list">
+            <li>
+              <input
+                class="txt"
+                id="Nombre"
+                name="Nombre"
+                type="text"
+                placeholder="Nombre"
+                required
+              />
+            </li>
+            <li>
+              <input
+                id="Apellido"
+                name="Apellido"
+                type="text"
+                placeholder="Apellido"
+                required
+              />
+            </li>
+            <li>
+              <input
+                id="Direccion"
+                name="Direccion"
+                type="text"
+                placeholder="Dirección"
+                required
+              />
+            </li>
+            <li>
+              <input 
+                id= "Celular"
+                name="Celular"
+                type="text"
+                placeholder="Celular"
+                required
+                />
+            </li>
+            <li>
+              <input
+                id="Correo"
+                name="Correo"
+                type="email"
+                placeholder="Correo electrónico"
+                required
+              />
+            </li>
+            <li>
+              <input
+                id="Passw"
+                name="Passw"
+                type="password"
+                placeholder="Contraseña"
+                required
+              />
+              <small class="password-hint">
+                Las contraseñas deben tener entre 8 y 20 caracteres e incluir una
+                mayúscula, una minúscula y un número.
+              </small>
+            </li>
+          </ul>
+          <div class="form-buttons">
+            <button type="submit" class="btn-primary">Crear Cuenta</button>
+            <button type="button" class="btn-secondary">Cancelar</button>
+          </div>
+          <p class="login-link">
+            ¿Tiene ya una cuenta? <a href="/iniciarSesion">Iniciar sesión</a>
+          </p>
+        </form>
+      </li>
+    </div>
+  </body>
+</Layout>
+
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #F4F4F4;
+  }
+  /* Contenedor de la tarjeta */
+    .link-card {
+    list-style: none;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.372);
+    color: black;
+  }
+
+  /* Estilo para el título */
+  h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-style: ;
+  }
+  /* Lista del formulario */
+  .form-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Ajuste de espacio entre inputs */
+  }
+
+  /* Campos de entrada de texto - Estilo de una sola línea */
+  .form-list input {
+    width: 100%;
+    padding: 0.5rem 0; /* Ajuste el padding para que se vea bien */
+    border: none; /* Eliminar bordes */
+    border-bottom: 2px solid #ccc; /* Agregar solo borde inferior */
+    background-color: transparent; /* Fondo transparente */
+    color: black;
+    font-size: 1rem;
+    outline: none; /* Eliminar el borde cuando el input está en foco */
+    transition: border-color 0.3s ease;
+  }
+
+  /* Cambiar color del borde inferior al hacer foco */
+  .form-list input:focus {
+    border-bottom-color: #00a3c8; /* Color al hacer foco */
+  }
+
+  /* Texto debajo del campo de contraseña */
+  .password-hint {
+    font-size: 0.75rem;
+    color: #666;
+    display: block;
+    margin-top: 0.5rem;
+  }
+
+  /* Botones */
+  .form-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .btn-primary {
+    background-color: #37B7C3;
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #008aab;
+  }
+
+  .btn-secondary {
+    background-color: white;
+    color: black;
+    padding: 0.75rem;
+    border: 2px solid black;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    background-color: #f1f1f1;
+  }
+
+  /* Enlace de iniciar sesión */
+  .login-link {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .login-link a {
+    color: #37B7C3;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+
+</style>

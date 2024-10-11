@@ -1,0 +1,184 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header_login.astro';
+---
+<Layout title="Inicia sesión">
+  <main>
+    <Header />
+    <div class="login-wrapper">
+      <div class="cuadro-blanco">
+        <!-- Contenido del cuadro -->
+        <div class="login-container">
+          <h1>Iniciar sesión</h1>
+          <div class="input-container">
+            <input type="email" id="email" placeholder="Correo electrónico">
+            <input type="password" id="contraseña" placeholder="Contraseña">
+          </div>
+          <div class="restablecer_contra">
+            <p>Crear o restablecer contraseña</p>
+          </div>
+          <button class="login-btn">Iniciar sesión</button>
+          <p>¿Aún no tiene una cuenta? <a href="/CrearCuenta" class="crear-cuenta">Crear cuenta</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px); /* Altura dinámica menos espacio para header y footer */
+    padding: 50px 0; /* Espacio superior e inferior */
+    background-color: #F4F4F4;
+}
+
+/* Cuadro blanco centrado */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo del título */
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Contenedor del input para ajustar estilos */
+/* Contenedor del input */
+.input-container {
+    margin-top: 70px;
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* Estilo del input de correo */
+input[type="email"] {
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid #ccc; 
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Placeholder con estilo más claro */
+input[type="email"]::placeholder {
+    color: #999;
+    text-align: center;
+    font-style: italic;
+}
+
+/* Efecto de hover/focus en el input */
+input[type="email"]:focus {
+    border-bottom: 1px solid black; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+}
+
+/* Estilo del input de contraseña */
+input[type="password"] {
+    margin-top: 40px; /* Añade espacio entre los inputs */
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid #ccc; /* Solo muestra la línea inferior */
+    border-radius: 5px; /* Redondea las esquinas (solo visible cuando se haga focus) */
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transición suave para la línea y el contorno */
+}
+
+/* Placeholder con estilo más claro */
+input[type="password"]::placeholder {
+    color: #999;
+    text-align: center;
+    font-style: italic;
+}
+
+/* Efecto de hover/focus en el input */
+input[type="password"]:focus {
+    border-bottom: 1px solid black; /* La línea inferior cambia a negro */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Añade un contorno alrededor */
+}
+
+.restablecer_contra{
+  font-style: italic;
+  color:#37B7C3 ;
+}
+/* Estilo del botón de iniciar sesión */
+.login-btn {
+  margin-top: 40px;
+    background-color: #37B7C3; 
+    color: white; 
+    border: none; /* Sin bordes visibles */
+    border-radius: 50px; /* Bordes redondeados */
+    padding: 15px 70px; /* Espaciado interno para el tamaño del botón */
+    font-size: 16px; 
+    font-weight: bold; 
+    cursor: pointer;
+    text-align: center; 
+    transition: background-color 0.3s ease; 
+}
+
+/* Efecto hover para cambiar el color al pasar el ratón */
+.login-btn:hover {
+    background-color: #37B7C3; /* Fondo más oscuro en hover */
+}
+/* Estilo del enlace "Crear cuenta" */
+.crear-cuenta {
+  margin-top: 90px;
+    color: #37B7C3; 
+    text-decoration: none; /* Eliminar el subrayado del enlace */
+    font-weight: bold; /* Texto en negrita */
+    transition: color 0.3s ease; /* Transición suave en el hover */
+}
+
+/* Efecto hover en el enlace */
+.crear-cuenta:hover {
+    color: #37B7C3; 
+}
+p {
+    margin-top: 50px; /* Añade 20px de espacio entre el botón y el texto del párrafo */
+}
+
+  
+.cuadro-blanco {
+    width: 90%; /* Ocupa el 90% del ancho de la pantalla */
+    max-width: 425px; /* Establece el ancho máximo en pantallas grandes */
+    min-width: 250px; /* Establece un ancho mínimo para pantallas muy pequeñas */
+    height: auto; /* Ajusta la altura automáticamente según el contenido */
+    background-color: white; 
+    border: 1px solid #ccc; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    margin: 50px auto; 
+    padding: 20px; 
+    border-radius: 10px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* Ajustes adicionales para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .login-wrapper {
+        padding: 20px; /* Menor padding en pantallas pequeñas */
+    }
+    .cuadro-blanco {
+        padding: 20px 20px;
+    }
+    .login-btn {
+        padding: 15px 50px;
+    }
+}
+</style>

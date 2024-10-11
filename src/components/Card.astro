@@ -1,61 +1,273 @@
 ---
-interface Props {
-	title: string;
-	body: string;
-	href: string;
-}
-
-const { href, title, body } = Astro.props;
+const {titulo} = Astro.props;
+const {cuadro, tipo} = Astro.props;
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
+<div class={tipo === 'grande' ? 'card grande' : tipo === 'pequeña' ? 'card pequeña' : 'card simple'}>
+  <h3>{titulo}</h3>
+
+  {tipo === 'grande' ? (
+      <>
+          <h1 class="titulo-principal">Te invitamos a contactarnos</h1>
+          <h2 class="subtitulo">¿Tienes preguntas o algún feedback? Estamos aquí para ayudarte, envíanos un mensaje y responderemos dentro de 24 horas.</h2>
+          <hr class="linea-separadora" />
+          <div class="formulario">
+                <div class="campo-nombre-apellido">
+                    <div class="campo">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" placeholder="Primer nombre" />
+                    </div>
+                    <div class="campo">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" id="apellido" placeholder="Primer apellido" />
+                    </div>
+                </div>
+                <div class="campo-email">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="Dirección de e-mail" />
+                </div>
+                <div class="campo-mensaje">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" placeholder="¡Envíanos un mensaje!" rows="4"></textarea>
+                </div>
+            </div>
+            <button class="boton-enviar">Enviar</button>
+            </>
+    ) : (
+        <h3>{titulo}</h3>
+    )}
+
+  {tipo === 'pequeña' && (
+    <div class="contact-info">
+      <div class="contact-slot">
+        <img src="/email.png" alt="Correo" class="icon" />
+        <div class="contact-detail">
+          <h4>E-mail</h4>
+          <a href="mailto:jselectronics@gmail.com" class="email-link">jselectronics@gmail.com</a>
+        </div>
+      </div>
+      <div class="contact-slot">
+        <img src="/telefono.png" alt="Teléfono" class="icon" />
+        <div class="contact-detail">
+          <h4>Teléfono</h4>
+          <span>+507 8893-2383</span>
+        </div>
+      </div>
+      <div class="contact-slot">
+        <img src="/direccion.png" alt="Dirección" class="icon" />
+        <div class="contact-detail">
+          <h4>Dirección</h4>
+          <span>Ave. Las Américas, La Chorrera</span>
+        </div>
+      </div>
+    </div>
+  )}
+</div>  
+
 <style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 1px;
-		background-color: #23262d;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 7px;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	}
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
-		color: white;
-		background-color: #23262d;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
-	}
+  .card {
+    background: #e6e6e6;
+    border-radius: 0.3125rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2), 0 1.5625rem 3.125rem rgba(0, 0, 0, 0.1);
+    padding: 0.625rem;
+    width: 50rem;
+    margin-bottom: 3.125rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2.1875rem;
+  }
+
+  /* Estilo para la tarjeta grande */
+  .card.grande {
+    width: 42.1875rem;
+    height: 71.8125rem;
+    margin-bottom: 3.125rem;
+    position: relative;
+  }
+
+  /* Estilo para la tarjeta pequeña */
+  .card.pequeña {
+    width: 32.5rem;
+    height: 19rem;
+    margin-top: 2.20rem;
+    margin-bottom: 1.20rem;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-slot {
+    display: flex;
+    align-items: center;
+    background-color: #d0d0d0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    width: 100%;
+    max-width: 29rem;
+  }
+
+  .contact-slot .icon {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+  }
+
+  .contact-detail {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-detail h4 {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+  }
+  .email-link {
+    color: #001B58;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+  }
+
+.email-link:hover {
+    text-decoration: underline;
+  }
+
+  .contact-detail span {
+    color: #001B58;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+  }
+
+  /* Estilo para la card grande */
+  .boton-enviar {
+    background-color: #37B7C3;
+    color: white; 
+    border: none; 
+    border-radius: 0.25rem;
+    padding: 0.75rem 1.5rem; 
+    font-size: 1rem;
+    cursor: pointer;
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+  }
+
+    .titulo-principal {
+        font-family: 'Inter', sans-serif;
+        font-size: 3.75rem;
+        color: #088395;
+        margin-bottom: 3rem;
+    }
+    .subtitulo {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: #333;
+        margin-bottom: 3rem;
+    }
+
+    .linea-separadora {
+        border: none;
+        height: 1px;
+        background-color: #B3B3B3;
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .formulario {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2rem;
+    }
+
+    .campo-nombre-apellido {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+
+    .campo {
+        width: 45%;
+        margin-bottom: 2rem;
+    }
+
+    .campo label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: 'Inter', Medium, sans-serif;
+    font-size: 1.5rem;
+}
+
+    .campo input {
+        width: 90%;
+        height: 4.0625rem;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+        box-sizing: border-box;
+        font-family: 'Inter', Extra Light, sans-serif;
+    }
+    .campo-email {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .campo-email label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-family: 'Inter', Medium, sans-serif;
+        font-size: 1.5rem;
+    }
+
+    .campo-email input {
+        width: 95%;
+        height: 4.0625rem;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+        box-sizing: border-box;
+        font-family: 'Inter', Extra Light, sans-serif;
+    }
+
+    .campo-email input::placeholder {
+        font-family: 'Inter', Extra Light, sans-serif;
+    }
+
+    .campo-mensaje {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .campo-mensaje label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-family: 'Inter', Medium, sans-serif;
+        font-size: 1.5rem;
+    }
+
+    .campo-mensaje textarea {
+        width: 95%;
+        height: 12.5rem;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+        box-sizing: border-box;
+        font-family: 'Inter', Extra Light, sans-serif;
+        resize: none;
+    }
+
+    .campo-mensaje textarea::placeholder {
+        font-family: 'Inter', Extra Light, sans-serif;
+    }
 </style>

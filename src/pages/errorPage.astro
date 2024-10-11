@@ -1,0 +1,113 @@
+---
+import Head from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+---
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet">
+    <title>Página no encontrada | JS.Electronics.PTY</title>
+  </head>
+  <body>
+    <Head/>
+    <div class="mensaje">
+        <h1>Oops!</h1>
+        <img id="cat" src="/cat.png" alt="cat">
+        <p>Parece que no podemos encontrar la página que estas buscando.</p>
+    </div>
+  </body>
+  <Footer></Footer>
+</html>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+*{
+    margin: 0;
+    font-family:"Inter", sans-serif;
+}
+.header{
+    display: flex;
+    border: 1px solid rgb(197, 195, 195); 
+    padding-left: 5%;         
+    padding-right: 5%;  
+    margin: 0;
+    height: 10vh;      
+}
+.header .logo img{
+    height: 75%;
+    width: auto;
+    margin-top: 15%;
+}
+.header .nav-links{
+    display: flex;
+    white-space: nowrap;
+    gap: 2vw;
+    margin-top: -8vh;
+    padding: 3% 85%;
+    list-style: none;
+    color: rgb(136, 136, 136);
+}
+.header .nav-links a{
+    font-size: 700;
+    color: rgb(136, 136, 136);
+    text-decoration: none;
+}
+.header #categorias{
+    margin-left: -2vw;
+    border: none;
+    width: 1.5vw;
+    height: 3vh;
+    color: rgb(136, 136, 136);
+}
+.header #categorias a{
+    font-size: 700;
+    color: rgb(136, 136, 136);
+    text-decoration: none;
+}
+.header #cart{
+    margin-left: 3.5vw;
+}
+.header .busqueda{
+    margin-top: 2vh;
+    margin-left: 3vw;
+}
+.header .busqueda input{
+    position: relative;
+    background-color: rgb(241, 241, 241);
+    padding-left: 2.5vw;
+    border: none;
+    border-radius: 1vh;
+    width: 30vw;
+    height: 6vh;
+    margin-left: -5%;
+    color: rgb(136, 136, 136);
+    z-index: 1;
+}
+.header #lupa{
+    position: relative;
+    z-index: 2;
+}
+.mensaje h1{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 100;
+    text-align: center;
+    margin: 10%;
+    font-size: 8vW;
+}
+.mensaje #cat{
+    display: block; 
+    margin-left: 31vw; 
+    margin-top: -10vw;
+}
+.mensaje p{
+    font-family:"Inter", sans-serif;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 3%;
+    margin-left: 26%;
+    margin-right: 26%;
+    margin-bottom: 13%;
+    font-size: 3vW;
+}
+</style>
