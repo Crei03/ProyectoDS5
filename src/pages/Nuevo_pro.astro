@@ -1,0 +1,200 @@
+---
+import Anadir from '../components/anadir.astro';
+import Agregar from '../components/agregar.astro';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Añadir</title>
+</head>
+<body class="flex">
+    <div class="contenedor_prin">
+        <span class="close-icon" onclick="cerrarVentana()">&times;</span> <!-- Ícono de cerrar -->
+            <!-- Resto del contenido aquí -->
+        <div class="flex">
+            <div class="contenedor_sec">
+                <div class="titulo">
+                    <img src="/agregar.png" alt="Agregar" style="margin-left: 10%; margin-bottom: 50%;" class="img-agregar">
+                    <h2 style="text-align: center;">Agregar Imagen</h2>
+                    <input class="input-container input-field" type="text" id="image-link" name="image-link" style="margin-left: 7%;" placeholder="URL de la imagen" required>
+                    <div style="margin-left: 15%; margin-top: 30%;">
+                        <Agregar /> <!-- Renderiza el componente -->
+                    </div>
+                </div>
+            </div>                      
+            <div class="contenedor_info">
+                <div class="contenido">
+                    <div class="titulo">
+                        <h1>Añadir Nuevo Producto</h1>
+                        <input class="input-container input-field" type="text" id="nombre" name="nombre" placeholder="Nombre Del Producto" required>
+                        <select name="marca" id="marca" class="input-container select-field">
+                            <option value="" disabled selected>Marca</option>
+                            <option value="Apple">Apple</option>
+                            <option value="Dell">Dell</option>
+                            <option value="HP">HP</option>
+                            <option value="Acer">Acer</option>
+                            <option value="MSI">MSI</option>
+                            <option value="Microsoft">Microsoft</option>
+                            <option value="Asus">Asus</option>
+                            <option value="Lenovo">Lenovo</option>
+                            <option value="Huawei">Huawei</option>
+                        </select>
+                        <select name="modelo" id="modelo" class="input-container select-field">
+                            <option value="" disabled selected>Modelo</option>
+                            <option value="Gama Baja">Gama Baja</option>
+                            <option value="Gama Media">Gama Media</option>
+                            <option value="Gama Alta">Gama Alta</option>
+                            <option value="Gama Empresarial">Gama Empresarial</option>
+                            <option value="Gama Gamer">Gama Gamer</option>
+                        </select>
+                        <select name="color" id="color" class="input-container select-field">
+                            <option value="" disabled selected>Color</option>
+                            <option value="Azul">Azul</option>
+                            <option value="Blanco">Blanco</option>
+                            <option value="Gris">Gris</option>
+                            <option value="Negro">Negro</option>
+                            <option value="Plateado">Plateado</option>
+                        </select>                        
+                        <select name="procesador" id="procesador" class="input-container select-field">
+                            <option value="" disabled selected>Procesador</option>
+                        </select>
+                        <select name="ram" id="ram" class="input-container select-field">
+                            <option value="" disabled selected>RAM</option>
+                        </select>
+                        <select name="almacenamiento" id="almacenamiento" class="input-container select-field">
+                            <option value="" disabled selected>Almacenamiento</option>
+                        </select>
+                        <textarea class="input-container input-field" style="padding-bottom: 20%;" id="Descripción" name="Descripción" placeholder="Descripción Del Producto" required></textarea>
+                        <input class="input-container input-field" type="number" id="precio" name="precio" placeholder="Precio" required>
+                        <input class="input-container input-field" type="number" id="en_stock" name="en_stock" placeholder="Stock" required>
+                        <input class="input-container input-field" type="text" id="tarj_grafica" name="tarj_grafica" placeholder="Tarjeta Gráfica" required>
+                    </div>
+
+                    <div class="añadir" style="margin-top: 20%;" >
+                        <Anadir /> <!-- Renderiza el componente -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    body {
+        margin: 0; /* Elimina el margen por defecto del navegador */
+        height: auto; /* Altura automática para adaptarse al contenido */
+        display: flex; /* Utiliza flexbox para el diseño */
+        justify-content: center; /* Centra horizontalmente el contenido */
+        align-items: flex-start; /* Alinea el contenido al principio (arriba) */
+        font-family: 'Inter', sans-serif; /* Fuente principal de la página */
+    }
+    /* Contenedor principal */
+    .contenedor_prin {
+        border: 0.10rem solid hwb(0 76% 23%); /* Borde de color y grosor específico */
+        border-radius: 0.90rem; /* Esquinas redondeadas */
+        display: inline-block; /* Muestra el contenedor en línea */
+        padding: 4%; /* Espaciado interno */
+        position: relative; /* Posicionamiento relativo para elementos internos */
+        min-height: 400px; /* Altura mínima del contenedor (ajustable según necesidades) */
+    }
+    /* Contenedor secundario */
+    .contenedor_sec {
+        border: 0.10rem solid hwb(0 76% 23%); /* Borde del contenedor secundario */
+        border-radius: 0.90rem; /* Esquinas redondeadas */
+        display: flex; /* Utiliza flexbox para alinear el contenido */
+        justify-content: center; /* Centra el contenido horizontalmente */
+        align-items: center; /* Centra el contenido verticalmente */
+        margin: 3% 5%; /* Espaciado externo */
+        width: 300px; /* Ancho del contenedor (ajustable) */
+    }
+    /* Contenedor de información */
+    .contenedor_info {
+        padding: 1%; /* Espaciado interno */
+        margin-top: 3%; /* Margen superior para separar del contenedor principal */
+        display: flex; /* Utiliza flexbox */
+        flex-direction: column; /* Coloca los elementos en una columna */
+        width: 500px; /* Ancho del contenedor (ajustable) */
+        position: relative; /* Posicionamiento relativo para el contenido interno */
+    }
+    /* Sección de contenido */
+    .contenido {
+        display: flex; /* Utiliza flexbox */
+        flex-direction: column; /* Coloca el título y el botón en una columna */
+        justify-content: space-between; /* Espacia el título y el botón */
+        height: auto; /* Altura automática para adaptarse al contenido */
+    }
+    /* Botón de añadir */
+    .añadir {
+        margin-top: auto; /* Empuja el botón hacia la parte inferior del contenedor */
+        align-self: flex-end; /* Alinea el botón a la derecha */
+    }
+    /* Clase para elementos flexibles */
+    .flex {
+        display: flex; /* Utiliza flexbox */
+    }
+    .titulo h1 {
+        justify-content: center; /* Centra el título horizontalmente */
+        align-items: center; /* Centra el título verticalmente */
+        font-weight: normal; /* Quita el estilo de negrita */
+    }
+    
+    /* Contenedores de entrada */
+    .input-container {
+        margin: 1rem 0; /* Espaciado vertical entre los campos de entrada */
+    }
+    
+    /* Entrada de texto */
+    .input-field {
+        width: 75%; /* Ancho del campo de entrada */
+        padding: 0.8rem; /* Espaciado interno */
+        border: 1px solid #ccc; /* Borde gris claro */
+        border-radius: 4px; /* Esquinas redondeadas */
+        font-size: 1rem; /* Tamaño de la fuente */
+        resize: vertical; /* Permite cambiar el tamaño verticalmente */
+    }
+    
+    /* Estilo para los campos de selección */
+    .select-field {
+        font-family: 'Arial', sans-serif; /* Fuente para los selectores */
+        color: #6b6969; /* Color del texto */
+        width: 82%; /* Ancho del campo de selección */
+        padding: 0.6rem; /* Espaciado interno */
+        border: 1px solid #ccc; /* Borde gris claro */
+        border-radius: 4px; /* Esquinas redondeadas */
+        font-size: 1rem; /* Tamaño de la fuente */
+    }
+    
+    /* Estilo para imágenes que se agregarán */
+    .img-agregar {
+        max-width: 70%; /* Limita el ancho de la imagen al 70% del contenedor */
+        height: auto; /* Mantiene la proporción de la imagen */
+        margin-bottom: 1rem; /* Espaciado inferior para separar de otros elementos */
+        display: block; /* Hace que la imagen sea un bloque para centrarla */
+    }
+    .close-icon {
+        position: absolute; /* Posición absoluta para colocarlo en la parte superior derecha */
+        top: 10px; /* Distancia desde la parte superior */
+        right: 10px; /* Distancia desde la derecha */
+        font-size: 1.5rem; /* Tamaño del ícono */
+        color: #6b6969; /* Color del ícono */
+        cursor: pointer; /* Cambia el cursor al pasar sobre el ícono */
+    }
+    </style>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const closeButton = document.querySelector('.close-icon');
+        if (closeButton) {
+            closeButton.addEventListener('click', cerrarVentana);
+        }
+    });
+    
+    function cerrarVentana() {
+        // Redirige a la página de inventario
+        window.location.href = "/inventario"; // Cambia "/inventario" por la ruta de tu página principal de inventario
+    }
+    </script>
+    

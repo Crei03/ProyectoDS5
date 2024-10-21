@@ -1,5 +1,5 @@
-<!-- BtnAñadir.astro -->
-<button class="add-button">Agregar Producto</button>
+<!-- BtnAdd.astro -->
+<button class="add-button" onclick="window.location.href='/Nuevo_pro'">Añadir Producto</button>
 
 <style>
   .add-button {
@@ -11,5 +11,10 @@
     cursor: pointer;
     display: block;
     margin: 20px auto;
+    transition: background-color 0.3s ease;
+  }
+
+  .add-button:hover {
+    background-color: #009be6;
   }
 </style>

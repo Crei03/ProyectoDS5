@@ -1,0 +1,26 @@
+<body>
+    <button class="boton" onclick="redirigirInventario()">Añadir</button>
+</body>
+
+<script>
+    function cerrarVentana() {
+        // Redirige a la página de inventario
+        window.location.href = "/inventario"; // Asegúrate de que esta sea la ruta correcta a tu página de inventario
+    }
+</script>
+
+<style>
+    .boton {
+        background-color: #37B7C3; /* Color de fondo */
+        border-radius: 3px; /* Bordes redondeados */
+        border: 2px solid transparent; /* Borde transparente */
+        display: inline-block; /* Para que el botón se comporte como un bloque en línea */
+        font-size: 20px; /* Tamaño de la fuente */
+        color: #ffffff; /* Color del texto */
+        transition: background-color 0.3s ease; /* Transición suave al cambiar el color de fondo */
+        padding: 10px 50px; /* Espaciado interno */
+    }
+    .boton:hover {
+        background-color: #088395;
+    }
+</style>

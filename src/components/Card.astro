@@ -1,6 +1,6 @@
 ---
 const {titulo} = Astro.props;
-const {cuadro, tipo} = Astro.props;
+const {tipo} = Astro.props;
 ---
 
 <div class={tipo === 'grande' ? 'card grande' : tipo === 'pequeña' ? 'card pequeña' : 'card simple'}>

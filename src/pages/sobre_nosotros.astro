@@ -1,0 +1,285 @@
+---
+import Head from '../components/Header.astro'
+import Card from '../components/Card.astro';
+import Footer from '../components/Footer.astro'
+import Layout from '../layouts/Layout.astro'; 
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet">
+  <title>Sobre nosotros | JS.Electronics.PTY</title>
+</head>
+
+<Head/>
+<div class="banner-container">
+    <img src="/fondo1.jpg" alt="Banner de la página" max-width=20% />
+    <div class="banner-text">Sobre Nosotros</div> <!-- TITULO DE LA PÁGINA -->
+</div><br><br><br>
+<div class="mensaje">
+    <section >
+        <p class="parrafo">JSElectronics, fundada en 2020 en La Chorrera, Panamá Oeste, se ha destacado en la venta de laptops, ofreciendo una amplia variedad de marcas y modelos. Con un equipo de 25 empleados altamente capacitados, la empresa se distingue por su asesoramiento personalizado, ayudando a los clientes a encontrar la laptop ideal según sus necesidades y presupuesto. La ubicación estratégica de la tienda ha sido clave para su éxito, atrayendo tanto a residentes locales como a visitantes de la Ciudad de Panamá y áreas circundantes.</p>
+      </section>    
+</div><br><br><br><br>
+<div class="contenedor_mi flex"> <!-- Contenedor sobre misión -->
+  <div>
+      <img src="/mision.jpg" alt="MISION" class="mi-image">
+  </div>
+  <div>
+      <h1 class="text-mi">Misión</h1><br>
+      <p class="parrafo_mi" style="text-align: justify;">
+          Nuestra misión es ofrecer productos que superen las expectativas en rendimiento, diseño y durabilidad, 
+          siendo la elección preferida por la combinación de tecnología avanzada y estilo. Nos comprometemos con 
+          la excelencia en el servicio al cliente y la asesoría técnica para garantizar una experiencia completa 
+          y satisfactoria.
+      </p>
+  </div>
+</div><br><br>
+<div class="contenedor_vi flex"> <!-- Contenedor sobre visión -->
+  <div>
+      <h1 class="text-vi">Visión</h1><br>
+      <p class="parrafo_vi"> 
+        Visualizamos un futuro donde nuestra marca sea sinónimo de innovación y confianza en tecnología portátil, 
+        liderando la industria de laptops con productos de última generación. Aspiramos a expandir nuestra presencia 
+        global, destacándonos en ventas y en el desarrollo de soluciones tecnológicas que mejoren la vida de las personas.
+      </p>
+  </div>
+  <div>
+    <img src="/vision.jpg" alt="VISION" class="vi-image"> 
+  </div>
+</div><br><br><br><br><br><br>
+<div>
+  <h1 class="alinear" style="font-size: 280%;">Nuestro Equipo</h1> <!-- PRESENTACIÓN DEL EQUIPO -->
+</div><br><br>
+
+
+<div class="alinear">
+  <div class="presentacion ">
+    <div> <!-- CEO DE LA EMPRESA -->
+      <img src="/hector.jpg" alt="HECTOR" class="imagenes"> 
+    </div>
+    <h2 class="nombre_centro">Héctor Hernández</h2>
+    <h2 class="rol">CEO</h2>
+  </div>
+</div><br><br>
+<div class="flex "> <!-- CONTENEDOR DE LOS 3 PRIMERO ROLES-->
+  <div class="presentacion">
+    <div>
+      <img src="/juan.jpg" alt="JUAN" class="sub_imagenes"> 
+    </div>
+    <h4 class="nombre_centro">Juan Pérez</h4>
+    <h4 class="rol">Director de Ventas y Marketing</h4>
+  </div>
+  <div class="presentacion">
+    <div>
+      <img src="/maria.jpg" alt="MARIA" class="sub_imagenes"> 
+    </div>
+    <h4 class="nombre_centro">María González</h4>
+    <h4 class="rol">Directora de Soporte Técnico</h4>
+  </div>
+  <div class="presentacion">
+    <div>
+      <img src="/carlos.jpg" alt="CARLOS" class="sub_imagenes"> 
+    </div>
+    <h4 class="nombre_centro">Carlos Rodríguez</h4>
+    <h4 class="rol">Director de Compra y Logística</h4>
+  </div>
+</div><br><br>
+
+<div class="flex "> <!-- CONTENEDOR DE LOS 3 SEGUNDOS ROLES-->
+  <div class="presentacion">
+    <div>
+      <img src="/laura.jpg" alt="LAURA" class="sub_imagenes"> 
+    </div>
+    <h4 class="nombre_centro">Laura Sánchez</h4>
+    <h4 class="rol">Directora de Finanzas</h4>
+  </div>
+  <div class="presentacion">
+    <div>
+      <img src="/alejandro.jpg" alt="ALEJANDRO" class="sub_imagenes"> 
+    </div>
+    <h4 class="nombre_centro">Alejandro Martínez</h4>
+    <h4 class="rol">Director de Recursos Humanos</h4>
+  </div>
+  <div class="presentacion">
+    <div>
+      <img src="/Ana.jpg" alt="ANA" class="sub_imagenes"> 
+    </div>
+    <h4 class="nombre_centro">Ana López</h4>
+    <h4 class="rol">Directora de IT</h4>
+  </div>
+</div><br><br><br><br>
+<Footer></Footer>
+<style> 
+* {
+  margin: 0; /* Elimina el margen de todos los elementos */
+  padding: 0; /* Elimina el relleno de todos los elementos */
+  box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del elemento */
+}
+
+/* Estilos para el cuerpo de la página */
+body {
+  margin: 0; /* Elimina el margen del cuerpo */
+  padding: 0; /* Elimina el relleno del cuerpo */
+  font-family: Arial, sans-serif; /* Establece la fuente del cuerpo */
+  overflow-x: hidden; /* Evita el desbordamiento horizontal */
+} 
+
+/* Estilos para los párrafos */
+.parrafo {
+  margin-left: 09.5%; /* Margen izquierdo del párrafo */
+  margin-right: 09.5%; /* Margen derecho del párrafo */
+  text-align: justify; /* Justifica el texto */
+  line-height: 180%; /* Altura de línea del texto */
+  font-size: 140%; /* Tamaño de fuente del párrafo */
+}
+
+/* Estilos para el título de la misión */
+.text-mi { 
+  text-align: right; /* Alinea el texto a la derecha */
+  font-size: 280%; /* Tamaño de fuente para el título */
+  margin-right: 3.9%; /* Margen derecho del título */
+}
+
+/* Estilos para el contenedor de la misión */
+.contenedor_mi {
+  border: 0.20rem solid hwb(0 76% 23%); /* Grosor y color del borde */
+  border-radius: 0.90rem; /* Esquinas redondeadas */
+  margin-left: 5%; /* Margen izquierdo del contenedor */
+  margin-right: 5%; /* Margen derecho del contenedor */
+  padding-top: 3%; /* Espaciado interno superior */
+  padding-bottom: 3%; /* Espaciado interno inferior */
+  padding-left: 5%; /* Espaciado interno izquierdo */
+  padding-right: 3%; /* Espaciado interno derecho */
+}
+
+/* Estilos para la imagen de la misión */
+.mi-image {
+  width: 180%; /* Ancho de la imagen al 180% del contenedor padre */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
+/* Estilos para los párrafos de la misión */
+.parrafo_mi {
+  margin-left: 27%; /* Margen izquierdo del párrafo */
+  margin-right: 03.5%; /* Margen derecho del párrafo */
+  margin-bottom: 1%; /* Margen inferior del párrafo */
+  text-align: justify; /* Justifica el texto */
+  line-height: 180%; /* Altura de línea del texto */
+  font-size: 140%; /* Tamaño de fuente del párrafo */
+}
+
+/* Estilos para el título de la visión */
+.text-vi { 
+  text-align: left; /* Alinea el texto a la izquierda */
+  font-size: 280%; /* Tamaño de fuente para el título */
+}
+
+/* Estilos para el contenedor de la visión */
+.contenedor_vi {
+  border: 0.20rem solid hwb(0 76% 23%); /* Grosor y color del borde */
+  border-radius: 0.90rem; /* Esquinas redondeadas */
+  margin-left: 5%; /* Margen izquierdo del contenedor */
+  margin-right: 5%; /* Margen derecho del contenedor */
+  padding-top: 3%; /* Espaciado interno superior */
+  padding-bottom: 3%; /* Espaciado interno inferior */
+  padding-left: 5%; /* Espaciado interno izquierdo */
+  padding-right: 5%; /* Espaciado interno derecho */
+}
+
+/* Estilos para la imagen de la visión */
+.vi-image {
+  max-width: 24rem; /* Ancho máximo de la imagen */
+  height: auto; /* Mantiene la proporción de la imagen */
+  margin-left: auto; /* Margen izquierdo automático para centrar */
+  margin-right: auto; /* Margen derecho automático para centrar */
+}
+
+/* Estilos para los párrafos de la visión */
+.parrafo_vi {
+  margin-right: 09%; /* Margen derecho del párrafo */
+  margin-bottom: 1%; /* Margen inferior del párrafo */
+  text-align: justify; /* Justifica el texto */
+  line-height: 180%; /* Altura de línea del texto */
+  font-size: 140%; /* Tamaño de fuente del párrafo */
+}
+
+/* Estilos para el contenedor del banner */
+.banner-container {
+  position: relative; /* Posiciona el contenedor de forma relativa */
+  text-align: center; /* Centra el texto dentro del contenedor */
+  width: 100%; /* Ancho del contenedor del banner */
+}
+
+/* Estilos para la imagen del banner */
+.banner-container img {
+  width: 100%; /* Asegura que la imagen ocupe el 100% del ancho de la página */
+  height: auto; /* Mantiene la relación de aspecto de la imagen */
+}
+
+/* Estilos para el texto del banner */
+.banner-text {
+  position: absolute; /* Posiciona el texto de forma absoluta */
+  top: 50%; /* Posición vertical en el centro */
+  left: 50%; /* Posición horizontal en el centro */
+  transform: translate(-50%, -50%); /* Centra el texto */
+  color: white; /* Color del texto */
+  font-family: 'Inter', sans-serif; /* Fuente del texto */
+  font-size: 6vw; /* Tamaño de fuente responsivo */
+  font-weight: 600; /* Grosor de fuente */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Sombra del texto */
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+
+.flex {
+  display: flex; /* Activa Flexbox en el contenedor */
+  justify-content: space-around; /* Espacio uniforme entre elementos */
+}
+
+/* Estilos para las presentaciones */
+.presentacion {
+  border: 0.20rem solid hwb(0 76% 23%); /* Grosor y color del borde */
+  border-radius: 0.90rem; /* Esquinas redondeadas */
+  flex-direction: column; /* Dirección de los elementos en columna */
+  display: inline-block; /* Permite que los elementos se alineen en línea */
+  padding: 1% 3%; /* Espaciado interno */
+}
+
+/* conTenedor del CEO */
+.alinear {
+  display: flex; /* Activa Flexbox en el contenedor */
+  justify-content: center; /* Centra los elementos horizontalmente */
+  align-items: center; /* Centra los elementos verticalmente */
+  flex-direction: column; /* Coloca los elementos en una columna */
+}
+
+/* imagen del CEO*/
+.imagenes {
+  width: 20rem; /* Ancho de la imagen */
+  height: auto; /* Mantiene la proporción de la imagen */
+  display: block; /* Hace que la imagen se comporte como un bloque */
+  margin-bottom: 2%; /* Margen inferior de la imagen */
+}
+
+/* Estilos para las sub-imágenes */
+.sub_imagenes {
+  width: 15rem; /* Ancho de la sub-imagen */
+  height: auto; /* Mantiene la proporción de la imagen */
+  display: block; /* Hace que la sub-imagen se comporte como un bloque */
+  margin-bottom: 2%; /* Margen inferior de la sub-imagen */
+}
+
+/* Estilos para los nombre de los roles*/
+.nombre_centro {
+  text-align: center; /* Centra el texto */
+  margin-bottom: 0.9%; /* Margen inferior */
+}
+
+/* Estilos para el rol */
+.rol {
+  font-weight: normal; /* Elimina la negrita */
+  text-align: center; /* Centra el texto */
+}
+</style>

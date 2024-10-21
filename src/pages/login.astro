@@ -10,15 +10,17 @@ import Header from '../components/Header_login.astro';
         <!-- Contenido del cuadro -->
         <div class="login-container">
           <h1>Iniciar sesión</h1>
-          <div class="input-container">
-            <input type="email" id="email" placeholder="Correo electrónico">
-            <input type="password" id="contraseña" placeholder="Contraseña">
-          </div>
-          <div class="restablecer_contra">
-            <p>Crear o restablecer contraseña</p>
-          </div>
-          <button class="login-btn">Iniciar sesión</button>
-          <p>¿Aún no tiene una cuenta? <a href="/CrearCuenta" class="crear-cuenta">Crear cuenta</a></p>
+          <form id="iniciarSesionForm" action="/api/iniciarSesion" accept-charset="UTF-8" method="POST">
+            <div class="input-container">
+              <input class="email" type="email" id="email" name="email" placeholder="Correo electrónico" required>
+              <input class="password" type="password" id="contraseña" name="contraseña" placeholder="Contraseña" required>
+            </div>
+            <div class="restablecer_contra">
+              <p>Crear o restablecer contraseña</p>
+            </div>
+            <button type="submit" class="login-btn">Iniciar sesión</button>
+            <p>¿Aún no tiene una cuenta? <a href="/CrearCuenta" class="crear-cuenta">Crear cuenta</a></p>
+          </form>
         </div>
       </div>
     </div>
