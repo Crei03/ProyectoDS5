@@ -19,7 +19,77 @@ const laptops: Laptop[] = await response.json();
 import Layout from "../layouts/Layout.astro";
 ---
 
-  <div class="container">
+<div class="page-container">
+  <div class="filters">
+    <h3>Marcas</h3>
+    <input type="checkbox" id="marca1" name="marcas" value="Apple">
+    <label for="marca1">Apple</label>
+    <br>
+    <input type="checkbox" id="marca2" name="marcas" value="Dell">
+    <label for="marca2">Dell</label>
+    <br>
+    <input type="checkbox" name="marcas" id="marca3" value="HP">
+    <label for="marca3">HP</label>
+    <br>
+    <input type="checkbox" name="marcas" id="marca4" value="Acer">
+    <label for="marca4">Acer</label>
+    <br>
+    <input type="checkbox" name="marcas" id="marca5" value="MSI">
+    <label for="marca5">MSI</label>
+    <br>
+    <input type="checkbox" name="marcas" id="marca6" value="Microsoft">
+    <label for="marca6">Microsoft</label>
+    <br>
+    <input type="checkbox" name="marcas" id="marca7" value="Asus">
+    <label for="marca7">Asus</label>
+    <br>
+    <input type="checkbox" name="marcas" id="marca8" value="Lenovo">
+    <label for="marca8">Lenovo</label>
+    <br>
+    <input type="checkbox" name="marcas" id="marca9" value="Huawei">
+    <label for="marca9">Huawei</label>
+    <br>
+    
+    <h3>Almacenamiento</h3>
+    <input type="checkbox" name="almacenamiento" id="almc1" value="256 GB">
+    <label for="almc1">256 GB</label>
+    <br>
+    <input type="checkbox" name="almacenamiento" id="almc2" value="512 GB">
+    <label for="almc2">512 GB</label>
+    <br>
+    <input type="checkbox" name="almacenamiento" id="almc3" value="1 TB">
+    <label for="almc3">1 TB</label>
+    <br>
+    
+    <h3>RAM</h3>
+    <input type="checkbox" name="ram" id="ram1" value="4 GB">
+    <label for="ram1">4 GB</label>
+    <br>
+    <input type="checkbox" name="ram" id="ram2" value="8 GB">
+    <label for="ram2">8 GB</label>
+    <br>
+    <input type="checkbox" name="ram" id="ram3" value="16 GB">
+    <label for="ram3">16 GB</label>
+    <br>
+    
+    <h3>Gama</h3>
+    <input type="checkbox" name="gama" id="gamaBaja" value="Baja">
+    <label for="gamaBaja">Gama baja</label>
+    <br>
+    <input type="checkbox" name="gama" id="gamaMedia" value="Media">
+    <label for="gamaMedia">Media</label>
+    <br>
+    <input type="checkbox" name="gama" id="gamaAlta" value="Alta">
+    <label for="gamaAlta">Alta</label>
+    <br>
+    <input type="checkbox" name="gama" id="gamaEmpresarial" value="Empresarial">
+    <label for="gamaEmpresarial">Empresarial</label>
+    <br>
+    <input type="checkbox" name="gama" id="gamaGamer" value="Gamer">
+    <label for="gamaGamer">Gamer</label>
+  </div>
+
+  <div class="container" id="laptopContainer">
     {laptops.map((laptop) => (
       <div class="card">
         <img src={laptop.imagen} alt={laptop.modelo} />
@@ -40,17 +110,81 @@ import Layout from "../layouts/Layout.astro";
       </div>
     ))}
   </div>
-  <style>
+</div>
+
+<script>
+  function updateFilters() {
+    const laptopContainer = document.getElementById('laptopContainer');
+    if (laptopContainer) {
+      const cards = laptopContainer.getElementsByClassName('card');
+      const checkedMarcas = Array.from(document.querySelectorAll<HTMLInputElement>('input[name="marcas"]:checked')).map(el => el.value);
+      const checkedAlmacenamiento = Array.from(document.querySelectorAll<HTMLInputElement>('input[name="almacenamiento"]:checked')).map(el => el.value);
+      const checkedRam = Array.from(document.querySelectorAll<HTMLInputElement>('input[name="ram"]:checked')).map(el => el.value);
+      const checkedGama = Array.from(document.querySelectorAll<HTMLInputElement>('input[name="gama"]:checked')).map(el => el.value);
+
+      for (let card of cards) {
+        const marca = card.querySelector('.detalles li:nth-child(7)')?.textContent?.split(': ')[1] ?? '';
+        const almacenamiento = card.querySelector('.detalles li:nth-child(3)')?.textContent?.split(': ')[1] ?? '';
+        const ram = card.querySelector('.detalles li:nth-child(2)')?.textContent?.split(': ')[1] ?? '';
+        const precio = parseFloat(card.querySelector('.precio')?.textContent?.slice(1) ?? '0');
+
+        const matchesMarca = checkedMarcas.length === 0 || checkedMarcas.includes(marca);
+        const matchesAlmacenamiento = checkedAlmacenamiento.length === 0 || checkedAlmacenamiento.includes(almacenamiento);
+        const matchesRam = checkedRam.length === 0 || checkedRam.includes(ram);
+
+        let matchesGama = true;
+        if (checkedGama.length > 0) {
+          if (checkedGama.includes('Baja') && precio <= 500) matchesGama = true;
+          else if (checkedGama.includes('Media') && precio > 500 && precio <= 1000) matchesGama = true;
+          else if (checkedGama.includes('Alta') && precio > 1000 && precio <= 1500) matchesGama = true;
+          else if (checkedGama.includes('Empresarial') && precio > 1500 && precio <= 2000) matchesGama = true;
+          else if (checkedGama.includes('Gamer') && precio > 2000) matchesGama = true;
+          else matchesGama = false;
+        }
+
+        if (matchesMarca && matchesAlmacenamiento && matchesRam && matchesGama) {
+          (card as HTMLElement).style.display = '';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      }
+    }
+  }
+
+  // Add event listeners to all checkboxes
+  const checkboxes = document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]');
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', updateFilters);
+  });
+</script>
+</script>
+</script>
+</script>
+
+<style>
+  .page-container {
+    display: flex;
+    width: 100%;
+  }
+
+  .filters {
+    width: 250px;
+    padding: 1rem;
+    background-color: #f5f5f5;
+    margin-right: 1rem;
+  }
+
   .container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Tres columnas fijas */
-    gap: 1rem; /* Espacio entre tarjetas */
-    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: calc(100% - 250px);
   }
-    .card {
+
+  .card {
     display: flex;
-    flex-direction: column; /* Alinear el contenido en columna */
-    justify-content: space-between; /* Distribuir el contenido */
+    flex-direction: column;
+    justify-content: space-between;
     max-width: 350px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -91,7 +225,7 @@ import Layout from "../layouts/Layout.astro";
     list-style: none;
     padding: 0;
     margin: 0.5rem 0;
-    flex-grow: 1; /* Hacer que los detalles ocupen el espacio restante */
+    flex-grow: 1;
   }
 
   .details li {
@@ -116,13 +250,56 @@ import Layout from "../layouts/Layout.astro";
   
   @media (max-width: 1024px) {
     .container {
-      grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas medianas */
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media (max-width: 768px) {
+    .page-container {
+      flex-direction: column;
+    }
+
+    .filters {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+
     .container {
-      grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+      width: 100%;
+      grid-template-columns: 1fr;
     }
   }
-  </style>
+
+  .filters {
+    margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .filters h3 {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .filters label,
+  .filters input {
+    display: inline-block;
+    margin-bottom: 8px;
+    cursor: pointer;
+  }
+
+  .filters input {
+    margin-right: 8px;
+  }
+
+  .filters > input[type="checkbox"] {
+    accent-color: #003c84;
+  }
+
+  .filters label {
+    font-size: 0.9rem;
+    color: #555;
+  }
+</style>
