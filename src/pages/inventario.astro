@@ -1,9 +1,10 @@
 ---
 import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import BtnAñadir from '../components/BtnAdd.astro';
-import tabInvent from '../components/tabInvent.astro';
-import type { Laptop } from '../types'; // Importa el tipo `Laptop`
+//import Footer from '../components/Footer.astro';
+import BtnAdd from '../components/BtnAdd.astro';
+import Tabladeinvent from '../components/Tabladeinvent.astro'; 
+import type { Laptop } from '../types';
+import Layout from '../layouts/Layout.astro';
 
 // Ejemplo de datos de laptops (puedes reemplazarlos más tarde con datos reales)
 let laptops: Laptop[] = [
@@ -64,25 +65,15 @@ function addLaptop(event: SubmitEvent) {
   (event.target as HTMLFormElement).reset();
 }
 ---
-
+<Layout title="Inventario de laptops">
 <Header />
-
 <main class="container">
   <h1>Inventario</h1>
-  <form onsubmit="addLaptop(event)" class="add-laptop-form">
-    <input type="text" name="name" placeholder="Nombre del Producto" required />
-    <input type="text" name="details" placeholder="Detalles del Producto" required />
-    <input type="text" name="category" placeholder="Categoría" required />
-    <input type="text" name="price" placeholder="Precio" required />
-    <input type="number" name="stock" placeholder="Stock" required />
-    <input type="text" name="imageUrl" placeholder="URL de la Imagen" required />
-    <BtnAñadir />
-  </form>
-  <tabInvent laptops={laptops} />
+  <BtnAdd />
+  <Tabladeinvent /> <!-- Utiliza el nuevo componente aquí -->
 </main>
 
-<Footer />
-
+</Layout>
 <style>
   .container {
     max-width: 1200px;
