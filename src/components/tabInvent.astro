@@ -1,0 +1,42 @@
+---
+import FilaProduc from './FilaProduc.astro';
+import type { Laptop } from '../types'; // Importa el tipo `Laptop`
+
+const { laptops } = Astro.props as { laptops: Laptop[] };
+---
+
+<table class="inventory-table">
+  <thead>
+    <tr>
+      <th>Imagen</th>
+      <th>Nombre</th>
+      <th>Categoría</th>
+      <th>Precio</th>
+      <th>Stock</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {laptops.map((laptop: Laptop) => (
+      <FilaProduc laptop={laptop} />
+    ))}
+  </tbody>
+</table>
+
+<style>
+  .inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .inventory-table th, .inventory-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .inventory-table th {
+    background-color: #f5f5f5;
+  }
+</style>

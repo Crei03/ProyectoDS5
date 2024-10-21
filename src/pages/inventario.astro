@@ -1,0 +1,161 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BtnAñadir from '../components/BtnAdd.astro';
+import tabInvent from '../components/tabInvent.astro';
+import type { Laptop } from '../types'; // Importa el tipo `Laptop`
+
+// Ejemplo de datos de laptops (puedes reemplazarlos más tarde con datos reales)
+let laptops: Laptop[] = [
+  {
+    id: 1,
+    name: "Lenovo Yoga 7i",
+    details: "Intel Core i7-1165G7 | 16GB RAM | 512GB SSD",
+    category: "Gama Media",
+    price: "$750",
+    stock: 10,
+    imageUrl: "https://example.com/lenovo-yoga.jpg"
+  },
+  {
+    id: 2,
+    name: "HP Stream 14",
+    details: "Intel Celeron N4020 | 4GB RAM | 64GB eMMC",
+    category: "Gama Baja",
+    price: "$280",
+    stock: 3,
+    imageUrl: "https://example.com/hp-stream.jpg"
+  },
+  {
+    id: 3,
+    name: "Huawei MateBook X Pro",
+    details: "Intel Core i5-10210U | 16GB RAM | 512GB SSD",
+    category: "Gama Alta",
+    price: "$1,500",
+    stock: 5,
+    imageUrl: "https://example.com/huawei-matebook.jpg"
+  },
+  {
+    id: 4,
+    name: "Lenovo ThinkPad L14 Yoga",
+    details: "Intel Core i5-1135G7 | 8GB RAM | 256GB SSD",
+    category: "Empresarial",
+    price: "$1,000",
+    stock: 0,
+    imageUrl: "https://example.com/lenovo-thinkpad.jpg"
+  }
+];
+
+// Función para agregar un nuevo producto (provisional para demostración)
+function addLaptop(event: SubmitEvent) {
+  event.preventDefault();
+  const formData = new FormData(event.target as HTMLFormElement);
+
+  const newLaptop: Laptop = {
+    id: laptops.length + 1,
+    name: formData.get("name") as string,
+    details: formData.get("details") as string,
+    category: formData.get("category") as string,
+    price: formData.get("price") as string,
+    stock: parseInt(formData.get("stock") as string),
+    imageUrl: formData.get("imageUrl") as string
+  };
+
+  laptops = [...laptops, newLaptop];
+  (event.target as HTMLFormElement).reset();
+}
+---
+
+<Header />
+
+<main class="container">
+  <h1>Inventario</h1>
+  <form onsubmit="addLaptop(event)" class="add-laptop-form">
+    <input type="text" name="name" placeholder="Nombre del Producto" required />
+    <input type="text" name="details" placeholder="Detalles del Producto" required />
+    <input type="text" name="category" placeholder="Categoría" required />
+    <input type="text" name="price" placeholder="Precio" required />
+    <input type="number" name="stock" placeholder="Stock" required />
+    <input type="text" name="imageUrl" placeholder="URL de la Imagen" required />
+    <BtnAñadir />
+  </form>
+  <tabInvent laptops={laptops} />
+</main>
+
+<Footer />
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .add-laptop-form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .add-laptop-form input {
+    margin: 5px;
+    padding: 10px;
+    flex: 1 0 150px;
+  }
+
+  .inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .inventory-table th, .inventory-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .inventory-table th {
+    background-color: #f5f5f5;
+  }
+
+  .laptop-image {
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .price {
+    color: #007bff;
+    font-weight: bold;
+  }
+
+  .stock.in-stock {
+    color: green;
+  }
+
+  .stock.out-of-stock {
+    color: red;
+  }
+
+  .actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 5px;
+  }
+
+  .actions .edit-button {
+    color: #ffc107;
+  }
+
+  .actions .delete-button {
+    color: #dc3545;
+  }
+</style>
