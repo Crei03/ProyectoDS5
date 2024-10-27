@@ -1,0 +1,1005 @@
+---
+import Foot from '../components/Footer.astro'; 
+import Header from '../components/Header.astro';
+--- 
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Método de Pago</title>
+  </head>
+
+  <body>
+    <Header />
+    <br><br><br>
+    <h1>Método de pago</h1><br><br>
+
+    <section class="centered-section">
+      <h2>Elige un método de pago</h2>
+      <div class="payment-methods">
+        <div class="payment-method card" id="cardPaymentButton">
+          <a href="#">
+            <img src="/tarjeta.png" alt="Tarjeta de crédito" />
+            <h3>Pagar con tarjeta</h3>
+          </a>
+        </div>
+        <div class="payment-method card">
+          <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer">
+            <img src="/paypal.png" alt="Logo de PayPal" />
+            <h3>PayPal</h3>
+          </a>
+        </div>
+        <div class="payment-method card">
+          <a href="https://yappy.com.pa" target="_blank" rel="noopener noreferrer">
+            <img src="/yappy.png" alt="Logo de Yappy" />
+            <h3>Yappy</h3>
+          </a>
+        </div>
+        <div class="payment-method card" id="cashPaymentButton">
+          <a href="#">
+            <img src="/efectivo.png" alt="Pago en entrega" />
+            <h3>Pagar en la entrega</h3>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="centered-section">
+      <h2>Información de envío</h2>
+      <form class="form-grid">
+        <div class="name-address-row">
+          <label>
+            Nombre completo
+            <input type="text" name="nombre" required class="input-small" />
+          </label>
+          <label>
+            Dirección de envío
+            <input type="text" id="direccionEnvioInput" />
+          </label>
+        </div>
+        <label>
+          Provincia
+          <input type="text" name="provincia" required />
+        </label>
+        <label>
+          Corregimiento
+          <input type="text" name="corregimiento" required />
+        </label>
+        <label>
+          Detalles de dirección
+          <textarea name="detalles" rows="3"></textarea>
+        </label>
+        <div class="container-bn">
+          <button type="button" class="back-button">Volver al carrito</button>
+          <button type="button" class="next-button" onclick="window.location.href='/factura'">Siguiente</button>
+        </div>
+      </form>
+    </section>
+
+    <Foot />
+
+    <!-- Modal para seleccionar y agregar direcciones -->
+    <div id="addressModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeModalButton">×</span>
+        <h2>Selecciona una dirección de envío</h2>
+        <div id="addressList">
+          <div class="address-item">Irvin Broce, Via El Coco, Casa Nro 57, Chorrera, Panamá Oeste</div>
+          <div class="address-item">Angel Benitez, C. 5ta Nte, Casa Nro 34, Vista Alegre, Panamá Oeste</div>
+        </div>
+        <button type="button" id="addAddressButton"> + Agregar una nueva dirección</button>
+      </div>
+    </div>
+
+   <!-- Modal para añadir una nueva dirección -->
+<div id="addAddressModal" class="modal-nd">
+  <div class="modal-content">
+    <span class="close" id="closeAddAddressModal">×</span>
+    <h2>Añadir nueva dirección</h2><br>
+    <form id="newAddressForm">
+      <label class="completo-width">
+        Nombre completo (Nombre y Apellido)
+        <input type="text" name="nombreCompleto"/>
+      </label>
+      <div class="name-phone-row">
+        <label class="mitad-tamano">
+          Número de teléfono
+          <input type="text" name="telefono"/>
+        </label>
+        <label class="mitad-tamanos">
+          Cédula
+          <input type="text" name="cedula"/>
+        </label>
+      </div>
+      <div class="street-number-row completo-width">
+        <label class="completo-width">
+          Dirección
+          <input type="text" name="calle" placeholder="Nombre de la calle"/>
+          <input type="text" name="numero" placeholder="Nro Casa, Depto, Edificio, piso."/>
+        </label>
+      </div>
+      <div class="select-row">
+        <label class="mitad-tamano">
+          Provincia
+          <select name="provincia">
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="opcion1">Opción 1</option>
+            <option value="opcion2">Opción 2</option>
+            <option value="opcion3">Opción 3</option>
+            <option value="opcion4">Opción 4</option>
+            <option value="opcion5">Opción 5</option>
+            <option value="opcion6">Opción 6</option>
+            <option value="opcion7">Opción 7</option>
+            <option value="opcion8">Opción 8</option>
+            <option value="opcion9">Opción 9</option>
+            <option value="opcion10">Opción 10</option>
+          </select>
+        </label>
+        <label class="mitad-tamanos">
+          Distrito
+          <input type="text" name="distrito"/>
+        </label>
+      </div>
+      <label class="mitad-tamano">
+        Corregimiento
+        <input type="text" name="corregimiento1"/>
+      </label>
+      <div class="button-direccion2-container">
+        <button type="submit" class="bton-guardar" >Guardar dirección</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- Modal para pagar con tarjeta -->
+<div id="cardPaymentModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeCardPaymentModal">×</span>
+    <h2> Información de tarjeta</h2>
+    <form>
+      <!-- Grupo: Propietario y Tipo de Tarjeta -->
+      <div class="modal-input-group">
+        <label class="half-width">
+          Propietario
+          <input type="text" name="cardOwner" />
+        </label>
+        <label class="mitad-width">
+          Tipo de tarjeta
+          <div class="custom-select-container">
+            <select id="cardType" name="cardType" >
+              <option value="mastercard" data-icon="public/mastercard.svg">Mastercard</option>
+              <option value="visa" data-icon="public/visa.svg">Visa</option>
+              <option value="clave" data-icon="public/clave.png">Tarjeta Clave</option>
+            </select>
+          </div>
+        </label>
+      </div>
+
+      <label class="full-width">
+        Número de tarjeta
+        <input type="text" name="cardNumber"  />
+      </label>
+
+      <!-- Grupo: Mes y Año de Expiración -->
+      <div class="modal-input-group">
+        <label class="half-width">
+          Mes de expiración
+          <input type="number" name="expiryMonth" min="1" max="12" />
+        </label>
+        <label class="mitad-width">
+          Año de expiración
+          <input type="number" name="expiryYear" min="2024" />
+        </label>
+      </div>
+
+      <label class="full-width">
+        Número de CVC
+        <input type="text" name="cvc" />
+      </label>
+
+      <div class="button-container">
+          <button type="button" class="back-button" onclick="cardPaymentModal.style.display = 'none'">Cancelar</button>
+          <button type="submit" class="submit-button" onclick="confirmPurchaseModal.style.display = 'block'">Proceder</button>
+        </div>
+    </form>
+  </div>
+</div>
+
+    <!-- Modal para pagar en la entrega -->
+    <div id="cashPaymentModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeCashPaymentModal">×</span>
+        <h2>Pagar en la entrega</h2><br>
+        <label>
+          Monto:
+          <input type="text" style="width: 535px;" name="monto"/><br>
+        </label>
+        <button type="button" id="cancelCashPayment">Cancelar</button>
+        <button type="button" id="confirmCashPayment">Proceder</button>
+      </div>
+    </div>
+
+    <!-- Modal para confirmar la compra -->
+<div id="confirmPurchaseModal" class="modal" style="display: none;">
+  <div class="modal-conc">
+    <a href="#">
+      <img src="/confirmar.png" width="190" height="150" alt="Tarjeta de crédito" />
+    </a>
+    <h2>Confirmar compra</h2><br>
+    <button type="button" id="cancelConfirmPurchase">Cancelar</button>
+    <button type="button" id="confirmPurchase" onclick="window.location.href='/factura'">Confirmar</button>
+  </div>
+</div>
+
+  </body>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&display=swap');
+
+    * {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    section {
+      margin-bottom: 40px;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    section h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    /* Estilos comunes para los botones */
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: 1;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      }
+
+      /* Botón de Pagar */
+      button[type="submit"] {
+        background-color: #37B7C3;
+        color: #fff;
+        border: none;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #2a939e;
+      }
+
+      #cancelConfirmPurchase {
+        background-color: #white;
+        color: #black;
+        border-color: #37B7C3;
+      }
+
+      #cancelConfirmPurchase:hover {
+        background-color: #aaa;
+      }
+
+      #confirmPurchase {
+        background-color: #37b7c3;
+        color: white;
+        border: none;
+        position: relative;
+      }
+
+      #confirmPurchase:hover {
+        background-color: #2a939e;
+      }
+
+      /* Botón de Confirmar/proceder */
+      #confirmCashPayment {
+        background-color: #37b7c3;
+        color: white;
+        border: none;
+        position: relative;
+        left: 310px;
+      }
+
+      #confirmCashPayment:hover {
+        background-color: #2a939e;
+      }
+
+      /* Botón de Cancelar */
+      #cancelCashPayment {
+        background-color: #white;
+        color: #black;
+        border-color: #37B7C3;
+      }
+
+      #cancelCashPayment:hover {
+        background-color: #aaa;
+      }
+
+      /* Botón de nueva dirección */
+      #addAddressButton {
+        background-color: white;
+        color: black;
+        padding: 10px 15px;
+        font-size: 14px;
+        border-radius: 5px;
+        border-color: #37B7C3;
+      }
+
+      #addAddressButton:hover {
+        background-color: #37b7c3;
+      }
+
+      .name-phone-row, .street-number-row, .select-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px; /* Espacio entre los campos */
+      }
+
+      .name-phone-row label, .street-number-row label, .select-row label {
+        flex: 1; /* Cada campo tomará el mismo espacio */
+      }
+
+    /* Estilo para los métodos de pago */
+    .payment-methods {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    /* Estilo de las cards */
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background-color: #F6F4F4;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      width: 210px;
+      text-align: center;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      text-decoration: none;
+    }
+
+    .card img {
+      width: 100px;
+      height: 95px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Estilo para el formulario */
+    form {
+      display: grid;
+      gap: 15px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .name-address-row {
+      display: flex; /* Habilitar flexbox para la fila de nombre y dirección */
+      gap: 10px; /* Espacio entre los campos */
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+      width: 400px; /* Ancho fijo para los campos de nombre y dirección */
+    }
+
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      width: 100%; /* Asegura que los campos ocupen el 100% del ancho disponible */
+    }
+
+  .btn-guardar {
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    background-color: #37B7C3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .btn-guardar:hover {
+      background-color: #2a939e;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    .back-button {
+      padding: 10px 15px;
+      border: 1;
+      border-color: #37B7C3;
+      background-color: #FFFFFF;
+      color: #000000;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      width: fit-content;
+      justify-self: start;
+    }
+
+    .back-button:hover {
+      background-color: #CACACA;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    }
+
+    .container-bn {
+      .back-button {
+      padding: 10px 15px;
+      border: 1;
+      border-color: #37B7C3;
+      background-color: #FFFFFF;
+      color: #000000;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      width: fit-content;
+      justify-self: start;
+    }
+
+    .back-button:hover {
+      background-color: #CACACA;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    }
+
+    .next-button {
+      padding: 10px 30px;
+      border: none;
+      background-color: #37B7C3;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      width: fit-content;
+      justify-self: start;
+      position: relative;
+      left: 600px;
+    }
+
+    .next-button:hover {
+      background-color: #2a939e;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    }
+    }
+
+    /* Centrando las secciones */
+    .centered-section {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      left: 200px;
+    }
+
+    /* General: Estilos básicos para el modal */
+#cardPaymentModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+
+/* Estilos específicos para cada tipo de campo */
+.modal-input-group label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+/* Personalización para los inputs del modal */
+input[name="cardOwner"] {
+  width: 50%;  /* Ancho personalizado */
+  max-width: 250px;  /* Limita el ancho máximo */
+}
+
+select[name="cardType"] {
+  width: 50%;  /* Ancho del select */
+  max-width: 200px; 
+  position: relative;
+}
+
+input[name="cardNumber"] {
+  width: 100%; 
+  max-width: 410px;  /* Mayor espacio para el número de tarjeta */
+}
+
+input[name="expiryMonth"]{
+  width: 50%;  /* Menor ancho para los campos de fecha */
+  max-width: 200px;  /* Limitar ancho máximo */
+}
+
+input[name="expiryYear"] {
+  width: 50%;  /* Menor ancho para los campos de fecha */
+  max-width: 200px;  /* Limitar ancho máximo */
+  position: relative;
+  left: 0px;
+}
+
+input[name="cvc"] {
+  width: 100%;  /* Ajusta el ancho para el CVC */
+  max-width: 410px; 
+}
+
+input[name="nombreCompleto"] {
+  width: 100%;  /* Ancho personalizado */
+  max-width: 330px;  /* Limita el ancho máximo */
+}
+
+input[name="telefono"] {
+  width: 40%;  /* Ancho personalizado */
+  max-width: 250px;  /* Limita el ancho máximo */
+}
+
+input[name="cedula"] {
+  width: 40%;  /* Ancho personalizado */
+  max-width: 250px;  /* Limita el ancho máximo */
+  position: relative;
+  left: 0px;
+}
+
+.street-number-row {
+  width: 100%;  /* Ancho personalizado */
+  max-width: 330px;  /* Limita el ancho máximo */
+}
+
+select[name="provincia"] {
+  width: 40%;  /* Ancho personalizado */
+  max-width: 250px;  /* Limita el ancho máximo */
+}
+
+input[name="distrito"] {
+  width: 40%;  /* Ancho personalizado */
+  max-width: 250px;  /* Limita el ancho máximo */
+  position: relative;
+  left: 0px;
+}
+
+input[name="corregimiento1"] {
+  width: 40%;  /* Ancho personalizado */
+  max-width: 250px;  /* Limita el ancho máximo */
+}
+
+#cardPaymentModal .button-container { 
+  display: flex;
+  gap: 10px; /* Espacio entre los botones */
+  margin-top: 20px;
+}
+
+/* Estilo para el botón de Cancelar */
+#cardPaymentModal .back-button {
+      width: 24.7%;
+      padding: 10px;
+      border: 1;
+      border-color: #37B7C3;
+      background-color: #FFFFFF;
+      color: #000000;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+#cardPaymentModal .back-button:hover {
+      background-color: #CACACA;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    }
+
+/* Estilo para el botón de Proceder */
+#cardPaymentModal .submit-button {
+  width: 24.7%;
+  padding: 10px;
+  border: none;
+  background-color: #37B7C3; /* Azul */
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#cardPaymentModal .submit-button:hover {
+  background-color: #2a9ba8; /* Azul más oscuro al pasar el mouse */
+}
+
+/* Modal */
+#cardPaymentModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0%;
+  top: -15%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.0);
+}
+
+/* Contenido del modal */
+#cardPaymentModal .modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 450px;
+  border-radius: 12px;
+}
+
+#addAddressModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: -20;
+  width: 100%;
+  height: 100%;
+}
+
+/* Contenido del modal */
+#addAddressModal .modal-content {
+  background-color: #fff;
+  margin: 15% auto; /* Centrando el modal verticalmente */
+  padding: 20px;
+  width: 80%;
+  max-width: 370px; /* Establecer un tamaño máximo del modal */
+  border-radius: 12px; /* Bordes redondeados */
+}
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-nd {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0%;
+      top: -30%;
+      width: 100%;
+      height: 100%;
+    }
+    
+
+    .modal-conc {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 25px;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 25px;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 12px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #000;
+    }
+
+    .address-item {
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #f1f1f1;
+      border-radius: 6px;
+      cursor: pointer;
+    } 
+
+    .modal-input-group {
+    display: flex;
+    gap: 10px;
+  }
+
+  .half-width {
+    flex: 1; /* Ambos campos ocupan la mitad del ancho del contenedor */
+    position: relative;
+  }
+
+  .full-width {
+    width: 100%; /* Ocupa todo el ancho disponible */
+  }
+
+  .mitad-width {
+    flex: 1; /* Ambos campos ocupan la mitad del ancho del contenedor */
+    position: relative;
+    left: -200px;
+  }
+  .completo-width {
+  width: 100%;
+}
+
+.mitad-tamano {
+  flex: 1; /* Ambos campos ocupan la mitad del ancho del contenedor */
+    position: relative;
+}
+/* Clase para campos que ocupan la mitad del ancho */
+.mitad-tamanos {
+  flex: 1; /* Ambos campos ocupan la mitad del ancho del contenedor */
+    position: relative;
+    left: -240px;
+}
+
+/* Para los select o input que están en la misma fila */
+.select-row .mitad-tamano, .name-phone-row .mitad-tamano {
+  margin-bottom: 0; /* Si deseas alinear bien los campos en la misma fila */
+}
+  .custom-select-container {
+  position: relative;
+  width: 100%;
+}
+
+.custom-select-container select {
+  width: 100%;
+  padding-left: 40px; /* Deja espacio para la imagen */
+  font-size: 14px;
+  height: 40px;
+  appearance: none; /* Quita el estilo predeterminado del select */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: 10px center; /* Posiciona la imagen */
+  background-size: 20px 20px;
+}
+
+/* Estilo para cada opción del select */
+.custom-select-container option {
+  padding: 10px;
+}
+
+/* Iconos específicos para cada opción */
+#cardType option[value="mastercard"] {
+  background-image: url('images/mastercard.png');
+}
+
+#cardType option[value="visa"] {
+  background-image: url('images/visa.png');
+}
+
+#cardType option[value="clave"] {
+  background-image: url('images/clave.png');
+}
+
+
+  input, select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%; /* Asegura que los inputs ocupen todo el espacio disponible */
+
+  }
+
+  /* Contenedor para los botones */
+.button-direccion2-container {
+  display: flex; /* Alinea los botones en fila */
+  justify-content: space-between; /* Añade espacio entre los botones */
+  gap: 10px; /* Espacio entre los botones (puedes ajustar) */
+  margin-top: 20px; /* Añade un margen superior si lo necesitas */
+}
+
+/* Estilo del botón 'Guardar dirección' */
+.bton-guardar {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.bton-guardar:hover {
+  background-color: #45a049; /* Cambia el color al hacer hover */
+}
+
+</style>
+
+<script>
+  // Obtener referencias a los elementos clave
+  const direccionEnvioInput = document.getElementById('direccionEnvioInput') as HTMLInputElement | null;
+  const addressModal = document.getElementById('addressModal');
+  const closeModalButton = document.getElementById('closeModalButton');
+  const addAddressButton = document.getElementById('addAddressButton');
+  const addressList = document.getElementById('addressList');
+
+  const cardPaymentButton = document.getElementById('cardPaymentButton');
+  const cardPaymentModal = document.getElementById('cardPaymentModal');
+  const closeCardPaymentModal = document.getElementById('closeCardPaymentModal');
+
+  const cashPaymentButton = document.getElementById('cashPaymentButton');
+  const cashPaymentModal = document.getElementById('cashPaymentModal');
+  const closeCashPaymentModal = document.getElementById('closeCashPaymentModal');
+  const confirmCashPayment = document.getElementById('confirmCashPayment');
+
+  const confirmPurchaseModal = document.getElementById('confirmPurchaseModal');
+  const cancelConfirmPurchase = document.getElementById('cancelConfirmPurchase');
+  const confirmPurchase = document.getElementById('confirmPurchase');
+  const cardTypeSelect = document.getElementById('cardType') as HTMLSelectElement | null;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Manejar el modal para agregar nueva dirección
+    const addAddressModal = document.getElementById('addAddressModal');
+    const closeAddAddressModal = document.getElementById('closeAddAddressModal');
+
+    if (addAddressButton && addAddressModal && closeAddAddressModal) {
+      addAddressButton.addEventListener('click', () => {
+        addAddressModal.style.display = 'block';
+      });
+
+      closeAddAddressModal.addEventListener('click', () => {
+        addAddressModal.style.display = 'none';
+      });
+
+      window.addEventListener('click', (event) => {
+        if (event.target === addAddressModal) {
+          addAddressModal.style.display = 'none';
+        }
+      });
+    } else {
+      console.error("Algunos elementos no se encontraron en el DOM.");
+    }
+
+    // Manejar el modal de dirección de envío
+    if (direccionEnvioInput && addressModal && closeModalButton && addressList) {
+      direccionEnvioInput.addEventListener('click', () => {
+        addressModal.style.display = 'block';
+      });
+
+      closeModalButton.addEventListener('click', () => {
+        addressModal.style.display = 'none';
+      });
+
+      window.addEventListener('click', (event) => {
+        if (event.target === addressModal) {
+          addressModal.style.display = 'none';
+        }
+      });
+
+      addressList.addEventListener('click', (event) => {
+        const target = event.target as HTMLElement;
+        if (target.classList.contains('address-item')) {
+          direccionEnvioInput.value = target.textContent || '';
+          addressModal.style.display = 'none';
+        }
+      });
+    }
+
+    // Manejar el modal de pago en efectivo
+    if (confirmCashPayment && confirmPurchaseModal && cancelConfirmPurchase && confirmPurchase) {
+      confirmCashPayment.addEventListener('click', () => {
+        confirmPurchaseModal.style.display = 'block';
+      });
+
+      cancelConfirmPurchase.addEventListener('click', () => {
+        confirmPurchaseModal.style.display = 'none';
+      });
+
+      confirmPurchase.addEventListener('click', () => {
+        confirmPurchaseModal.style.display = 'none';
+        if (cashPaymentModal) {
+          cashPaymentModal.style.display = 'none'; // Cierra el modal de pago en la entrega
+        }
+        if (cardPaymentModal) {
+          cardPaymentModal.style.display = 'none'; // Cierra el modal de información de tarjeta
+        }
+      });
+
+      window.addEventListener('click', (event) => {
+        if (event.target === confirmPurchaseModal) {
+          confirmPurchaseModal.style.display = 'none';
+        }
+      });
+    } else {
+      console.error("Algunos elementos no se encontraron en el DOM.");
+    }
+
+    // Manejar el modal de pago con tarjeta
+    if (cardPaymentButton && cardPaymentModal && closeCardPaymentModal) {
+      cardPaymentButton.addEventListener('click', () => {
+        cardPaymentModal.style.display = 'block';
+      });
+
+      closeCardPaymentModal.addEventListener('click', () => {
+        cardPaymentModal.style.display = 'none';
+      });
+
+      window.addEventListener('click', (event) => {
+        if (event.target === cardPaymentModal) {
+          cardPaymentModal.style.display = 'none';
+        }
+      });
+    }
+
+    // Manejar el modal de pago en la entrega
+    if (cashPaymentButton && cashPaymentModal && closeCashPaymentModal) {
+      cashPaymentButton.addEventListener('click', () => {
+        cashPaymentModal.style.display = 'block';
+      });
+
+      closeCashPaymentModal.addEventListener('click', () => {
+        cashPaymentModal.style.display = 'none';
+      });
+
+      window.addEventListener('click', (event) => {
+        if (event.target === cashPaymentModal) {
+          cashPaymentModal.style.display = 'none';
+        }
+      });
+
+      const cancelCashPayment = document.getElementById('cancelCashPayment');
+      if (cancelCashPayment) {
+        cancelCashPayment.addEventListener('click', () => {
+          cashPaymentModal.style.display = 'none';
+        });
+      }
+    }
+
+    // Manejar la selección del tipo de tarjeta
+    if (cardTypeSelect) {
+      cardTypeSelect.addEventListener('change', function () {
+        const selectedOption = cardTypeSelect.options[cardTypeSelect.selectedIndex];
+        const icon = selectedOption.getAttribute('data-icon');
+
+        if (icon) {
+          cardTypeSelect.style.backgroundImage = `url('${icon}')`;
+        }
+      });
+    } else {
+      console.error("El elemento 'cardTypeSelect' no se encontró en el DOM.");
+    }
+  });
+</script>
